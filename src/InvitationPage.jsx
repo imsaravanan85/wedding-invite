@@ -58,14 +58,13 @@ const CountdownTimer = ({ targetDate }) => {
   );
 };
 
+import couple1 from './assets/couple1.png';
+import couple2 from './assets/couple2.png';
+import couple3 from './assets/couple3.png';
+import couple4 from './assets/couple4.png';
+
 const ImageCarousel = () => {
-  const baseUrl = import.meta.env.BASE_URL;
-  const images = [
-    `${baseUrl}assets/couple1.png`,
-    `${baseUrl}assets/couple2.png`,
-    `${baseUrl}assets/couple3.png`,
-    `${baseUrl}assets/couple4.png`
-  ];
+  const images = [couple1, couple2, couple3, couple4];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
