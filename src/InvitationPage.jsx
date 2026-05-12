@@ -179,7 +179,7 @@ const InvitationPage = () => {
               <span className="event-info-icon">📅</span>
               <span className="event-info-label">DATE</span>
               <span className="event-info-dot">·</span>
-              <span className="event-info-value">17 Jun 2026 · Tuesday</span>
+              <span className="event-info-value">17 Jun 2026 · Wednesday</span>
             </div>
             <div className="event-info-row">
               <span className="event-info-icon">🕖</span>
@@ -219,7 +219,7 @@ const InvitationPage = () => {
               <span className="event-info-icon">📅</span>
               <span className="event-info-label">DATE</span>
               <span className="event-info-dot">·</span>
-              <span className="event-info-value">18 Jun 2026 · Wednesday</span>
+              <span className="event-info-value">18 Jun 2026 · Thursday</span>
             </div>
             <div className="event-info-row">
               <span className="event-info-icon">🕘</span>
