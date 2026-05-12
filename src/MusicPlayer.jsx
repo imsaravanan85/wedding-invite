@@ -1,59 +1,55 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './MusicPlayer.css';
+import bgmAudio from './assets/bgm.mp3';
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const iframeRef = useRef(null);
+  const audioRef = useRef(null);
 
-  // YouTube video ID extracted from URL
-  const videoId = 'FyZz_kptbwU';
+  useEffect(() => {
+    // Initialize audio element
+    const audio = new Audio(bgmAudio);
+    audio.loop = true;
+    audio.currentTime = 47; // Start at 47th second
+    audioRef.current = audio;
+
+    // Attempt to play immediately
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.log("Autoplay was prevented by browser:", error);
+        setIsPlaying(false);
+      });
+    }
+
+    // Cleanup on unmount
+    return () => {
+      audio.pause();
+      audio.src = '';
+    };
+  }, []);
 
   const toggleMusic = () => {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
     if (isPlaying) {
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'pauseVideo' }),
-        '*'
-      );
+      audio.pause();
     } else {
-      iframe.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'playVideo' }),
-        '*'
-      );
+      audio.play();
     }
     setIsPlaying(!isPlaying);
   };
 
   return (
-    <>
-      {/* Hidden YouTube player */}
-      <iframe
-        ref={iframeRef}
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1&loop=1&playlist=${videoId}&controls=0&start=47`}
-        style={{
-          position: 'fixed',
-          width: 0,
-          height: 0,
-          border: 'none',
-          opacity: 0,
-          pointerEvents: 'none'
-        }}
-        allow="autoplay"
-        title="Wedding Music"
-      />
-
-      {/* Floating music toggle button */}
-      <button
-        className={`music-btn ${isPlaying ? 'music-playing' : ''}`}
-        onClick={toggleMusic}
-        aria-label={isPlaying ? 'Pause music' : 'Play music'}
-      >
-        <span className="music-icon">{isPlaying ? '♪' : '♪'}</span>
-        <span className="music-label">{isPlaying ? 'ON' : 'OFF'}</span>
-      </button>
-    </>
+    <button
+      className={`music-btn ${isPlaying ? 'music-playing' : ''}`}
+      onClick={toggleMusic}
+      aria-label={isPlaying ? 'Pause music' : 'Play music'}
+    >
+      <span className="music-icon">♪</span>
+      <span className="music-label">{isPlaying ? 'ON' : 'OFF'}</span>
+    </button>
   );
 };
 
