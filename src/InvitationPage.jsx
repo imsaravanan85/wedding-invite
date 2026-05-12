@@ -59,11 +59,12 @@ const CountdownTimer = ({ targetDate }) => {
 };
 
 const ImageCarousel = () => {
+  const baseUrl = import.meta.env.BASE_URL;
   const images = [
-    "/assets/couple1.png",
-    "/assets/couple2.png",
-    "/assets/couple3.png",
-    "/assets/couple4.png"
+    `${baseUrl}assets/couple1.png`,
+    `${baseUrl}assets/couple2.png`,
+    `${baseUrl}assets/couple3.png`,
+    `${baseUrl}assets/couple4.png`
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
