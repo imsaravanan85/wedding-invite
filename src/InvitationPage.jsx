@@ -59,21 +59,8 @@ const CountdownTimer = ({ targetDate }) => {
 };
 
 import couple1 from './assets/couple1.png';
-import couple2 from './assets/couple2.png';
-import couple3 from './assets/couple3.png';
-import couple4 from './assets/couple4.png';
 
 const ImageCarousel = () => {
-  const images = [couple1, couple2, couple3, couple4];
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="carousel-container" style={{ 
       position: 'relative', 
@@ -86,23 +73,15 @@ const ImageCarousel = () => {
       maskImage: 'radial-gradient(ellipse at center, black 60%, transparent 100%)',
       WebkitMaskImage: 'radial-gradient(ellipse at center, black 60%, transparent 100%)'
     }}>
-      {images.map((img, idx) => (
-        <img 
-          key={img} 
-          src={img} 
-          alt={`Couple ${idx + 1}`} 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: idx === currentIndex ? 1 : 0,
-            transition: 'opacity 1s ease-in-out'
-          }} 
-        />
-      ))}
+      <img 
+        src={couple1} 
+        alt="Couple" 
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover'
+        }} 
+      />
     </div>
   );
 };
@@ -125,7 +104,7 @@ const InvitationPage = () => {
       {/* Our Journey Section */}
       <section className="section journey-section" style={{ padding: '20px 20px 60px 20px' }}>
         <p className="scratch-hint">✦ Cherished moments ✦</p>
-        <h2 className="section-title">A Love Story in Frames</h2>
+        <h2 className="section-title">A Love Story in Frame</h2>
         <div className="borderless-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <ImageCarousel />
           <p className="quote-text" style={{ 
@@ -243,6 +222,56 @@ const InvitationPage = () => {
         </div>
       </section>
 
+      {/* ===== DAY 3 · POST MARRIAGE FEAST ===== */}
+      <section className="section event-detail-section">
+        <div className="event-block">
+          <div className="day-banner">
+            <div className="day-banner-line"></div>
+            <span className="day-banner-text">DAY 3 · FEAST</span>
+            <div className="day-banner-line"></div>
+          </div>
+          <div className="event-detail-card">
+            <div className="event-stars">✦ · ✦</div>
+            <h2 className="event-title-script">Post Marriage Feast</h2>
+
+            <div className="event-info-row">
+              <span className="event-info-icon">📅</span>
+              <span className="event-info-label">DATE</span>
+              <span className="event-info-dot">·</span>
+              <span className="event-info-value">21 Jun 2026 · Saturday</span>
+            </div>
+            <div className="event-info-row">
+              <span className="event-info-icon">🕦</span>
+              <span className="event-info-label">TIME</span>
+              <span className="event-info-dot">·</span>
+              <span className="event-info-value">11:30 AM onwards</span>
+            </div>
+            <div className="event-info-row">
+              <span className="event-info-icon">🏛️</span>
+              <span className="event-info-label">VENUE</span>
+              <span className="event-info-dot">·</span>
+              <span className="event-info-value">Sri Venkateswara Mahal</span>
+            </div>
+
+            <p className="event-detail-quote">
+              "Come together once more, as we celebrate the beginning of a beautiful journey with a grand feast of love and togetherness."
+            </p>
+
+            <a
+              href="https://share.google/LUwx6igEKziRdXVjH"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary"
+              style={{ display: 'inline-block', marginTop: '10px', marginBottom: '10px' }}
+            >
+              📍 View Venue on Maps
+            </a>
+
+            <p className="event-cta">✦ JOIN US FOR A GRAND CELEBRATION ✦</p>
+          </div>
+        </div>
+      </section>
+
       <div className="section-divider"><span className="divider-line"></span><span className="divider-icon">♥</span><span className="divider-line"></span></div>
 
       {/* The Venue Section */}
@@ -295,7 +324,6 @@ const InvitationPage = () => {
       <footer className="footer">
         <div className="footer-hearts">♥ ♥ ♥</div>
         <p>Made with ❤️ for Saravanankumar & Asritha</p>
-        <p className="footer-sub">17 & 18 Jun 2026 · Gudiyatham</p>
       </footer>
     </div>
   );

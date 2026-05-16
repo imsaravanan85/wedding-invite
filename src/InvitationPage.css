@@ -65,18 +65,42 @@
 }
 
 .script-title {
-  font-family: var(--font-script);
+  font-family: var(--font-names);
   font-size: 3.5rem;
   color: #c9506a;
   margin-bottom: 25px;
   line-height: 1.1;
-  font-weight: normal;
+  font-weight: bold;
+  -webkit-text-stroke: 0.5px #c9506a;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+  animation: gentleWave 4s ease-in-out infinite;
+  background: linear-gradient(90deg, #c9506a, #d4af37, #c9506a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gentleWave 4s ease-in-out infinite, shimmer 5s linear infinite;
+}
+
+@keyframes gentleWave {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .script-ampersand {
   color: #c9506a;
-  font-family: var(--font-script);
+  font-family: var(--font-names);
+  background: linear-gradient(90deg, #d4af37, #ea6487, #d4af37);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
 }
 
 .hero-quote {

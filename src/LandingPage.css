@@ -237,18 +237,39 @@
   margin-bottom: 30px;
 }
 .name-script {
-  font-family: var(--font-script);
+  font-family: var(--font-names);
   font-size: 5rem;
   line-height: 0.85;
-  color: #b8860b;
-  font-weight: normal;
+  font-weight: bold;
+  -webkit-text-stroke: 1px #b8860b;
   margin: 0;
+  background: linear-gradient(90deg, #b8860b, #d4af37, #b8860b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nameWave 4s ease-in-out infinite, nameShimmer 5s linear infinite;
 }
+
+@keyframes nameWave {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes nameShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 .ampersand {
-  font-family: var(--font-script);
+  font-family: var(--font-names);
   font-size: 3.2rem;
   color: #ea6487;
   margin: 10px 0;
+  font-weight: bold;
+  -webkit-text-stroke: 1px #ea6487;
+  animation: nameWave 4s ease-in-out infinite;
+  animation-delay: 0.5s;
 }
 .event-type {
   font-family: var(--font-sans);
